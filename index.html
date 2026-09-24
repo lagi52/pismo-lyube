@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для тебя</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0a;
+    color: #d4d4d4;
+    font-family: 'Georgia', serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  .stars {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .star {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: twinkle 4s infinite ease-in-out;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.5); }
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 80px 25px 120px;
+  }
+  h1 {
+    font-size: 2.2rem;
+    color: #b0304a;
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: 3px;
+    font-weight: normal;
+    text-shadow: 0 0 20px rgba(176, 48, 74, 0.4);
+  }
+  .block {
+    margin-bottom: 70px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
+  }
+  .block.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .block h2 {
+    font-size: 1.3rem;
+    color: #b0304a;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    font-weight: normal;
+  }
+  .block p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #c8c8c8;
+    margin-bottom: 18px;
+    text-align: justify;
+  }
+  .block p.em {
+    color: #e8d5d8;
+    font-style: italic;
+  }
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: #b0304a;
+    margin: 0 auto 70px;
+    opacity: 0.5;
+  }
+  .final {
+    text-align: center;
+    margin-top: 100px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(176, 48, 74, 0.3);
+  }
+  .final p {
+    font-size: 1.2rem;
+    color: #e8d5d8;
+    line-height: 2;
+    text-align: center;
+  }
+  .heart {
+    color: #b0304a;
+    font-size: 1.5rem;
+    display: block;
+    margin-top: 30px;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.15); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="container">
+  <h1>ДЛЯ ТЕБЯ</h1>
+
+  <div class="block">
+    <h2>Я ЗНАЛ</h2>
+    <p>Я знал с самого начала, что ты — та самая девушка, которую я так долго искал. Узнавая тебя поближе, я стал понимать, что я у тебя буду недолго. Это началось ещё с марта, когда у нас начались первые ссоры...</p>
+    <p>Я знал, что ты та самая. Но наши отношения будут недолгими. И всё равно любил и люблю тебя. Как бы больно ни было осознавать, что мы вскоре расстанемся.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="block">
+    <h2>КАК Я СКУЧАЮ</h2>
+    <p>Ты не представляешь, как сильно я по тебе скучаю. Каждый день без тебя — как будто я дышу, но не чувствую воздуха. Я смотрю на твои фотографии, перечитываю старые сообщения и вспоминаю твой голос. Иногда мне кажется, что ты рядом, но тебя нет.</p>
+    <p class="em">Если бы ты знала, как тихо и пусто внутри, когда тебя нет.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="block">
+    <h2>ПРОСТИ</h2>
+    <p>Прости меня за каждую ссору, за каждое резкое слово, за каждую минуту, когда тебе было больно из-за меня. Я не хотел этого. Я просто не умел иначе. Я не оправдываюсь — я признаю. Я причинял тебе боль, а должен был быть тем, кто бережёт тебя.</p>
+    <p class="em">Прости меня. За всё.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="block">
+    <h2>Я ЛЮБЛЮ ТЕБЯ</h2>
+    <p>Люблю тебя не за что-то. А просто за то, что ты есть. За твой смех, за твои глаза, за твою упрямость, за твои «не хочу» и «отвали». За всё, что делает тебя тобой. Ты — не просто девушка. Ты — та, с кем я хотел связать жизнь.</p>
+    <p class="em">Я люблю тебя. Это не изменилось.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="block">
+    <h2>ЕСЛИ НЕ Я</h2>
+    <p>Если ты выберешь не меня — я приму это. Больно, но приму. Я хочу, чтобы ты была счастлива. Даже если не со мной. Пусть тот, кто будет рядом, любит тебя так же сильно, как я. Пусть смотрит на тебя таким же влюблённым взглядом. Ты это заслуживаешь.</p>
+    <p class="em">Просто будь счастлива. Даже без меня.</p>
+  </div>
+
+  <div class="final">
+    <p>Спасибо за всё, что было.</p>
+    <p>Я буду помнить каждый момент.</p>
+    <p>И если ты когда-нибудь вернёшься — я буду здесь.</p>
+    <span class="heart">❤</span>
+  </div>
+</div>
+
+<script>
+  // Звёзды
+  const starsContainer = document.getElementById('stars');
+  for (let i = 0; i < 100; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 4 + 's';
+    star.style.animationDuration = (3 + Math.random() * 3) + 's';
+    starsContainer.appendChild(star);
+  }
+
+  // Появление блоков при скролле
+  const blocks = document.querySelectorAll('.block');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+  blocks.forEach(block => observer.observe(block));
+</script>
+
+</body>
+</html>
