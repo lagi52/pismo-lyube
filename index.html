@@ -2,102 +2,194 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#0a0a0a">
 <title>Для тебя</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  html { scroll-behavior: smooth; }
+  
   body {
-    background: #0a0a0a;
+    background: #050505;
+    background-image: 
+      radial-gradient(ellipse at 20% 10%, rgba(80, 20, 35, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(60, 15, 30, 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(30, 10, 20, 0.2) 0%, transparent 70%);
+    background-attachment: fixed;
     color: #d4d4d4;
-    font-family: 'Georgia', serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
     overflow-x: hidden;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+  
   .stars {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
     z-index: 0;
+    overflow: hidden;
   }
+  
   .star {
     position: absolute;
-    width: 2px; height: 2px;
     background: #fff;
     border-radius: 50%;
-    opacity: 0.6;
     animation: twinkle 4s infinite ease-in-out;
   }
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.2; transform: scale(1); }
-    50% { opacity: 0.9; transform: scale(1.5); }
+  
+  .star.large {
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.8), 0 0 12px rgba(176, 48, 74, 0.4);
   }
+  
+  .star.small {
+    opacity: 0.4;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.15; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.3); }
+  }
+  
   .container {
     position: relative;
     z-index: 1;
     max-width: 720px;
     margin: 0 auto;
-    padding: 100px 25px 120px;
+    padding: clamp(60px, 12vh, 120px) clamp(20px, 5vw, 40px) clamp(80px, 15vh, 140px);
   }
+  
   h1 {
-    font-size: 2rem;
+    font-size: clamp(1.4rem, 5vw, 2.2rem);
     color: #b0304a;
     text-align: center;
-    margin-bottom: 80px;
-    letter-spacing: 4px;
+    margin-bottom: clamp(50px, 10vh, 90px);
+    letter-spacing: clamp(3px, 1.5vw, 6px);
     font-weight: normal;
-    text-shadow: 0 0 20px rgba(176, 48, 74, 0.4);
+    text-shadow: 
+      0 0 20px rgba(176, 48, 74, 0.6),
+      0 0 40px rgba(176, 48, 74, 0.3);
+    animation: fadeInDown 1.5s ease-out;
   }
+  
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
   .block {
-    margin-bottom: 60px;
+    margin-bottom: clamp(45px, 8vh, 70px);
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.2s ease, transform 1.2s ease;
+    transform: translateY(40px);
+    transition: opacity 1.4s ease, transform 1.4s ease;
   }
+  
   .block.visible {
     opacity: 1;
     transform: translateY(0);
   }
+  
   .block p {
-    font-size: 1.05rem;
-    line-height: 2;
+    font-size: clamp(0.95rem, 3.5vw, 1.08rem);
+    line-height: 1.95;
     color: #c8c8c8;
-    margin-bottom: 25px;
-    text-align: justify;
+    margin-bottom: clamp(18px, 3vh, 25px);
+    text-align: left;
+    letter-spacing: 0.2px;
   }
+  
   .block p.em {
-    color: #e8d5d8;
+    color: #e8b8c0;
     font-style: italic;
+    padding-left: clamp(12px, 3vw, 20px);
+    border-left: 2px solid rgba(176, 48, 74, 0.5);
+    text-shadow: 0 0 15px rgba(176, 48, 74, 0.2);
   }
+  
   .divider {
     width: 60px;
     height: 1px;
-    background: #b0304a;
-    margin: 0 auto 60px;
-    opacity: 0.4;
+    background: linear-gradient(90deg, transparent, #b0304a, transparent);
+    margin: 0 auto clamp(45px, 8vh, 70px);
+    opacity: 0.6;
+    box-shadow: 0 0 10px rgba(176, 48, 74, 0.5);
   }
+  
   .final {
     text-align: center;
-    margin-top: 100px;
-    padding-top: 40px;
-    border-top: 1px solid rgba(176, 48, 74, 0.3);
+    margin-top: clamp(70px, 12vh, 110px);
+    padding-top: clamp(30px, 6vh, 50px);
+    border-top: 1px solid rgba(176, 48, 74, 0.25);
+    position: relative;
   }
+  
+  .final::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background: #b0304a;
+    box-shadow: 0 0 15px rgba(176, 48, 74, 0.8);
+  }
+  
   .final p {
-    font-size: 1.15rem;
+    font-size: clamp(1rem, 3.8vw, 1.15rem);
     color: #e8d5d8;
     line-height: 2;
     text-align: center;
+    margin-bottom: 8px;
   }
+  
+  .final p.poem {
+    font-style: italic;
+    color: #d8b8c0;
+    margin-bottom: 6px;
+  }
+  
+  .final p.gap {
+    margin-bottom: 20px;
+  }
+  
   .heart {
     color: #b0304a;
-    font-size: 1.5rem;
-    display: block;
+    font-size: clamp(1.3rem, 5vw, 1.7rem);
+    display: inline-block;
     margin-top: 30px;
-    animation: pulse 2s infinite;
+    animation: pulse 2.2s infinite;
+    text-shadow: 0 0 20px rgba(176, 48, 74, 0.8);
   }
+  
   @keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.15); opacity: 1; }
+    0%, 100% { transform: scale(1); opacity: 0.75; }
+    50% { transform: scale(1.18); opacity: 1; }
+  }
+  
+  /* Мобильная оптимизация */
+  @media (max-width: 480px) {
+    .block p { text-align: left; }
+    .final p { line-height: 1.9; }
+  }
+  
+  /* Планшет */
+  @media (min-width: 481px) and (max-width: 900px) {
+    .container { max-width: 640px; }
+  }
+  
+  /* Большие экраны */
+  @media (min-width: 1200px) {
+    .container { max-width: 760px; }
+  }
+  
+  /* Уменьшенная анимация для тех, кому тяжело */
+  @media (prefers-reduced-motion: reduce) {
+    .star, .heart, h1 { animation: none; }
+    .block { transition: none; opacity: 1; transform: none; }
   }
 </style>
 </head>
@@ -110,67 +202,93 @@
 
   <div class="block">
     <p>Я знал с самого начала, что ты — та самая девушка, которую я так долго искал. Узнавая тебя поближе, я стал понимать, что я у тебя буду недолго. Это началось ещё с марта, когда у нас начались первые ссоры...</p>
-    <p>Я знал, что ты та самая. Но наши отношения будут недолгими. И всё равно любил и люблю тебя. Как бы больно ни было осознавать, что мы вскоре расстанемся.</p>
+    <p>Я знал, что ты та самая, но наши отношения будут недолгими. И я всё равно любил и люблю тебя. Как бы больно ни было осознавать, что мы вскоре расстанемся.</p>
   </div>
 
   <div class="divider"></div>
 
   <div class="block">
-    <p>Ты не представляешь, как сильно я по тебе скучаю. Это не просто слова. Я ловлю себя на том, что всё ещё жду твоего сообщения. Всё ещё надеюсь увидеть тебя там, где тебя нет.</p>
-    <p class="em">Без тебя внутри тихо. Не пусто — именно тихо. Как будто что-то важное выключили.</p>
+    <p>Ты не представляешь, как сильно я по тебе скучаю. Это не просто слова. Я ловлю себя на том, что всё ещё жду твоего сообщения, всё ещё надеюсь увидеть тебя там, где тебя нет. Но сам понимаю, что скорее всего ты не захочешь возвращаться туда, где тебе больно...</p>
   </div>
 
   <div class="divider"></div>
 
   <div class="block">
     <p>Прости меня за каждую ссору, за каждое резкое слово, за каждое недопонимание, за каждую минуту, когда тебе было больно из-за меня. Я не оправдываюсь — я признаю. Я причинял тебе боль, а должен был быть тем, кто бережёт тебя. Я просто не всегда понимал, чего ты хочешь, и это было тяжело. Но это не оправдание.</p>
-    <p class="em">Прости меня. За всё.</p>
   </div>
 
   <div class="divider"></div>
 
   <div class="block">
-    <p>Люблю тебя не за что-то, а просто за то, что ты есть. За твой смех, за твои глаза, за твою упрямость, за твои выходки и за твою самостоятельность. Мне нравится твой характер. За всё, что делает тебя тобой. Ты — не просто девушка. Ты — та, с кем я хотел связать жизнь.</p>
-    <p class="em">Я люблю тебя. Это не изменилось.</p>
+    <p>Люблю тебя не за что-то, а просто за то, что ты есть. За твой смех, за твои глаза, за твою упрямость, за твои выходки и за твою самостоятельность. Я люблю тебя за всё, что делает тебя тобой. Ты — та, с кем я хотел связать жизнь.</p>
   </div>
 
   <div class="divider"></div>
 
   <div class="block">
-    <p>Если ты выберешь не меня — я приму это. Мне будет больно, но приму. Я хочу, чтобы ты была счастлива. Даже если не со мной. Пусть тот человек, кто будет рядом, любит тебя так же сильно, как я. Пусть смотрит на тебя таким же влюблённым взглядом. Пусть с ним ты даже не будешь знать, что значит делать всё самой.</p>
-    <p class="em">Просто будь счастлива. Даже без меня.</p>
+    <p>Если ты выберешь не меня — я приму это. Я пойму, почему ты не захочешь возвращаться. Мне будет больно, но приму. Я хочу, чтобы ты была счастлива. Даже если не со мной. Пусть тот человек, кто будет рядом, любит тебя так же сильно, как я. Пусть смотрит на тебя таким же влюблённым взглядом. Пусть с ним ты даже не будешь знать, что значит делать всё самой.</p>
   </div>
 
   <div class="final">
-    <p>Я, кажется,</p>
-    <p>стал тобою зависим.</p>
-    <p>Как ночь — от луны</p>
-    <p>и сердце в огне.</p>
-   
-    <p>И сколько бы</p>
-    <p>не путал я мысли —</p>
-    <p>всё сводится</p>
-    <p>снова</p>
-    <p>к тебе.</p>
-   
-    <p>Спасибо за всё, что было.</p>
+    <p class="poem">Я, кажется,</p>
+    <p class="poem">стал тобою зависим.</p>
+    <p class="poem gap">Как ночь — от луны,</p>
+    <p class="poem">и сердце в огне.</p>
+    <p class="poem gap">И сколько бы</p>
+    <p class="poem">не путал я мысли —</p>
+    <p class="poem">всё сводится</p>
+    <p class="poem gap">снова</p>
+    <p class="poem gap">к тебе.</p>
+    <p style="margin-top: 40px;">Спасибо за всё, что было.</p>
     <p>Я буду помнить каждый момент.</p>
     <span class="heart">❤</span>
   </div>
 </div>
 
 <script>
+  // Звёзды с разными размерами и параллаксом
   const starsContainer = document.getElementById('stars');
-  for (let i = 0; i < 100; i++) {
+  const stars = [];
+  
+  for (let i = 0; i < 130; i++) {
     const star = document.createElement('div');
     star.className = 'star';
+    
+    const size = Math.random();
+    if (size > 0.85) {
+      star.classList.add('large');
+      star.style.width = star.style.height = '3px';
+    } else if (size > 0.5) {
+      star.style.width = star.style.height = '2px';
+    } else {
+      star.classList.add('small');
+      star.style.width = star.style.height = '1px';
+    }
+    
     star.style.left = Math.random() * 100 + '%';
     star.style.top = Math.random() * 100 + '%';
     star.style.animationDelay = Math.random() * 4 + 's';
     star.style.animationDuration = (3 + Math.random() * 3) + 's';
     starsContainer.appendChild(star);
+    stars.push({ el: star, speed: 0.02 + Math.random() * 0.05 });
   }
-
+  
+  // Параллакс звёзд
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        stars.forEach(s => {
+          s.el.style.transform = `translateY(${scrollY * s.speed}px)`;
+        });
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+  
+  // Появление блоков
   const blocks = document.querySelectorAll('.block');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -178,7 +296,7 @@
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
   blocks.forEach(block => observer.observe(block));
 </script>
 
